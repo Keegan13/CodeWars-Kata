@@ -1,5 +1,9 @@
-﻿Introduction
+﻿[Kata](https://www.codewars.com/kata/functional-streams)
+
+Introduction
 Infinite sequences are common, natural numbers for example are defined such that they always have a successor. In Haskell, most of the time lists are used to model infinite sequences, but why should we check for the empty case, if it will never occur?
+
+
 
 Streams offer an elegant alternative to model infinite data. A stream has a head element and an infinite tail, in lazy languages this is no problem, since the tail gets only evaluated when needed. But in languages with strict evaluation we need a lambda function to delay evaluation.
 
