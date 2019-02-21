@@ -13,7 +13,8 @@ namespace KataCSharp
             // The code provided will print ‘Hello World’ to the console.
             // Press Ctrl+F5 (or go to Debug > Start Without Debugging) to run your app.
             Console.WriteLine("Execution Started");
-            FunctionalStreams();
+            NextSmallerNumber();
+            //BestTravel();
             Console.ReadKey();
 
             // Go to http://aka.ms/dotnet-get-started-console to continue learning how to build a console app! 
@@ -38,6 +39,16 @@ namespace KataCSharp
 
             var stream = KataCSharp.FunctionalStreams.Stream.Primes();
             Print(KataCSharp.FunctionalStreams.Stream.Take(stream, 10));
+        }
+        static void NextSmallerNumber()
+        {
+            var numbers = new[] { 21, 531, 2071 };
+            foreach (var num in numbers)
+                Console.WriteLine("f({0})={1}", num, KataCSharp.NextSmallerNumber.Kata.NextSmaller(num));
+        }
+        static void BestTravel()
+        {
+            Console.WriteLine(KataCSharp.BestTravel.SumOfK.chooseBestSum(501, 3, new[] { 162, 163, 165, 165, 167, 168, 170, 172, 173, 175 }.ToList()));
         }
     }
 }

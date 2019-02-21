@@ -44,8 +44,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BestTravel\Kata.cs" />
     <Compile Include="Decompose.cs" />
     <Compile Include="FunctionalStreams\FunctionalStreams.cs" />
+    <Compile Include="NextSmallerNumber\Kata.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TextAlignJustify.cs" />
@@ -53,9 +55,8 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="FunctionalStreams\Desciption.md" />
+    <None Include="NextSmallerNumber\description.md" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="NextSmallerNumber\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
