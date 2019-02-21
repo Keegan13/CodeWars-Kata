@@ -47,6 +47,7 @@
     <Compile Include="BestTravel\Kata.cs" />
     <Compile Include="Decompose.cs" />
     <Compile Include="FunctionalStreams\FunctionalStreams.cs" />
+    <Compile Include="NextBiggerNumber\Kata.cs" />
     <Compile Include="NextSmallerNumber\Kata.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -55,6 +56,7 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="FunctionalStreams\Desciption.md" />
+    <None Include="NextBiggerNumber\description.md" />
     <None Include="NextSmallerNumber\description.md" />
   </ItemGroup>
   <ItemGroup />

@@ -45,6 +45,7 @@ namespace KataCSharp
             var numbers = new[] { 21, 531, 2071 };
             foreach (var num in numbers)
                 Console.WriteLine("f({0})={1}", num, KataCSharp.NextSmallerNumber.Kata.NextSmaller(num));
+            Console.WriteLine("f({0})={1}", 2017, KataCSharp.NextBiggerNumber.Kata.NextBiggerNumber(513));
         }
         static void BestTravel()
         {
