@@ -44,6 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="4by4Skyscapers\Skyscrapers.cs" />
     <Compile Include="BestTravel\Kata.cs" />
     <Compile Include="Decompose.cs" />
     <Compile Include="FunctionalStreams\FunctionalStreams.cs" />
