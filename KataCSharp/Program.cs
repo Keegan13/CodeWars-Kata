@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Diagnostics;
+using Newtonsoft.Json;
 
 namespace KataCSharp
 {
@@ -13,7 +15,7 @@ namespace KataCSharp
             // The code provided will print ‘Hello World’ to the console.
             // Press Ctrl+F5 (or go to Debug > Start Without Debugging) to run your app.
             Console.WriteLine("Execution Started");
-            Skyscrapers();
+            WheelerTransformation();
             Console.ReadKey();
 
             // Go to http://aka.ms/dotnet-get-started-console to continue learning how to build a console app! 
@@ -54,17 +56,71 @@ namespace KataCSharp
         {
             Console.WriteLine("f({0})={1}", 2017, KataCSharp.NextBiggerNumber.Kata.NextBiggerNumber(513));
         }
+        static void Skyscraper6()
+        {
+            //var clues = new[] { 2,2,3,1,4,
+            //                    2,3,2,3,1,
+            //                    1,3,2,2,2,
+            //                    3,1,2,2,2 };
+
+            var clues = new[]{ 0, 0, 0, 2, 2, 0,
+                            0, 0, 0, 6, 3, 0,
+                            0, 4, 0, 0, 0, 0,
+                            4, 4, 0, 3, 0, 0};
+
+            //            Execution Started
+            //Old: 00:00:00.0000013
+            //New: 00:27:56.4845257
+            // 5, 6, 1, 4, 3, 2
+            // 4, 1, 3, 2, 6, 5
+            // 2, 3, 6, 1, 5, 4
+            // 6, 5, 4, 3, 2, 1
+            // 1, 2, 5, 6, 4, 3
+            // 3, 4, 2, 5, 1, 6
+
+
+
+
+
+
+
+
+            //var puzzle = new _6by6Skyscrapers.Skyscrapers.Puzzle(clues);
+            //var solution = puzzle.Solve();
+            //if (solution != null)
+            //    _4by4Skyscapers.Skyscrapers.Print(solution);
+            //else
+            //    Console.WriteLine("Not found");
+
+            Stopwatch s = new Stopwatch();
+            s.Start();
+            //var result = _4by4Skyscapers.Skyscrapers.SolvePuzzle(clues);
+            s.Stop();
+            Console.WriteLine("Old:" + s.Elapsed.ToString());
+            //_4by4Skyscapers.Skyscrapers.Print(result);
+
+
+
+            s.Restart();
+            var puzzle = new _6by6Skyscrapers.Skyscrapers.Puzzle(clues);
+            var result2 = puzzle.Solve();
+            s.Stop();
+
+
+            Console.WriteLine("New: " + s.Elapsed.ToString());
+            _4by4Skyscapers.Skyscrapers.Print(result2);
+        }
         static void Skyscrapers()
         {
-            var clues = new[]{ 2, 2, 1, 4, 3,
-                               0, 4, 1, 2, 2,
-                               3, 0, 4, 0, 2,
-                               0 ,2, 0, 1, 0};
+            //var clues = new[]{ 2, 2, 1, 4, 3,
+            //                   0, 4, 1, 2, 2,
+            //                   3, 0, 4, 0, 2,
+            //                   0 ,2, 0, 1, 0};
 
-            //var clues = new[]{ 3, 2, 2, 3, 2, 1,
-            //               1, 2, 3, 3, 2, 2,
-            //               5, 1, 2, 2, 4, 3,
-            //               3, 2, 1, 2, 2, 4};
+            var clues = new[]{ 3, 2, 2, 3, 2, 1,
+                           1, 2, 3, 3, 2, 2,
+                           5, 1, 2, 2, 4, 3,
+                           3, 2, 1, 2, 2, 4};
 
             var expected = new[]{new []{ 2, 1, 4, 3, 5, 6},
                              new []{ 1, 6, 3, 2, 4, 5},
@@ -78,6 +134,18 @@ namespace KataCSharp
                 _4by4Skyscapers.Skyscrapers.Print(result);
             else
                 Console.WriteLine("Not found");
+        }
+        static void WheelerTransformation()
+        {
+            string[] words = new[] { "Humble Bundle" };
+            foreach (var word in words)
+            {
+                var encoded = BorrowWheelerTransformation.Kata.Encode(word);
+                var decoded = BorrowWheelerTransformation.Kata.Decode(encoded.Item1, encoded.Item2);
+                Console.WriteLine("Encoding {0} : result: {1}", word, encoded.Item1);
+                Console.WriteLine("Decoding {0} result: {1}", encoded.Item1, decoded);
+
+            }
         }
     }
 }

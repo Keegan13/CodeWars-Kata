@@ -27,6 +27,9 @@
             return sequance;
 
         }
+
+        
+
         public static int CountSteps(IEnumerable<int> array)
         {
             int stepHeight = 0, count = 0;
@@ -57,7 +60,7 @@
             return true;
         }
 
-        public static void Print(IEnumerable<IEnumerable<int>> area)
+        public static void Print<T>(IEnumerable<IEnumerable<T>> area)
         {
             string message = "";
             foreach (var row in area) message += row.Aggregate("", (agg, next) => agg += ", " + next.ToString()).Trim(',') + Environment.NewLine;
