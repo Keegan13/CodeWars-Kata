@@ -36,24 +36,58 @@
 
         public class CellNode
         {
+            private struct CacheKey
+            {
+                public CacheKey(int hash, Constraint constr) { this.Hash = hash; this.Constraint = constr; }
+                public CacheKey(IEnumerable<int> array, Constraint constraint) : this(array.Aggregate((a, n) => a = a * 10 + n), constraint) { }
+                public readonly int Hash;
+                public readonly Constraint Constraint;
+
+                public override bool Equals(object obj)
+                {
+                    if (!(obj is CacheKey))
+                    {
+                        return false;
+                    }
+
+                    var key = (CacheKey)obj;
+                    return Hash.Equals(key.Hash) && Object.ReferenceEquals(Constraint, key.Constraint);
+                }
+
+                public override int GetHashCode()
+                {
+                    var hashCode = 1224123155;
+                    hashCode = hashCode * -1521134295 + Hash.GetHashCode();
+                    hashCode = hashCode * -1521134295 + EqualityComparer<Constraint>.Default.GetHashCode(Constraint);
+                    return hashCode;
+                }
+            }
             public IEnumerable<Cell> Previous;
+            private static Dictionary<CacheKey, bool> Cache = new Dictionary<CacheKey, bool>();
             public int Size;
             public Seed Seed;
             public bool IsInvalid;
             public Constraint[][] RowConstraints;
             public Constraint[][] ColumnConstraints;
             public Cell Current;
-            private bool CheckRow(IEnumerable<int> row)
+            private bool CheckRow(IEnumerable<int> row) => !RowConstraints[Current.Index.Row].Any(x => !Check(row, x));
+            private bool CheckColumn(IEnumerable<int> col) => ColumnConstraints[Current.Index.Column].All(x => Check(col, x));
+            private bool Check(IEnumerable<int> array, Constraint constraint)
             {
-                foreach (var con in RowConstraints[Current.Index.Row])
+                bool result = true;
+                var current = new CacheKey(array, constraint);
+                if (Cache.ContainsKey(current))
                 {
-                    if (!con.Satisfies(row))
-                        return false;
-
+                    result = Cache[current];
                 }
-                return true;
+                else
+                {
+                    result = constraint.Satisfies(array);
+                    Cache.Add(current, result);
+                }
+                return result;
             }
-            private bool CheckColumn(IEnumerable<int> col) => ColumnConstraints[Current.Index.Column].All(x => x.Satisfies(col));
+
 
             private bool TryValue(int value)
             {
@@ -104,23 +138,9 @@
                 }
                 return Enumerable.Empty<Cell>();
             }
+            protected Index GetNextIndex() => Current.Index.Column == Size - 1 ? new Index(Current.Index.Row + 1, 0) : new Index(Current.Index.Row, Current.Index.Column + 1);
 
 
-
-            private Index GetNextIndex()
-            {
-                int i = Current.Index.Row, j = Current.Index.Column;
-                if (j == Size - 1)
-                {
-                    i++;
-                    j = 0;
-                }
-                else
-                {
-                    j++;
-                }
-                return new Index(i, j);
-            }
             protected IEnumerable<int> CurrentRow;
             protected IEnumerable<int> CurrentColumn;
             protected IEnumerable<int> GetCurrentRow()
@@ -166,8 +186,8 @@
                 Columns = new List<int>[size];
                 for (int i = 0; i < size; i++)
                 {
-                    Rows[i] = GetIncSeq(size).ToList();
-                    Columns[i] = GetIncSeq(size).ToList();
+                    Rows[i] = Enumerable.Range(1, size).ToList();
+                    Columns[i] = Enumerable.Range(1, size).ToList();
                 }
             }
             public void Remove(int row, int column, int value)
@@ -277,14 +297,6 @@
                     return true;
                 return false;
             }
-        }
-        public static int[] GetIncSeq(int size)
-        {
-            var sequance = new int[size];
-            for (int i = 0; i < sequance.Length; i++)
-                sequance[i] = i + 1;
-            return sequance;
-
         }
         public static int CountSteps(IEnumerable<int> array)
         {

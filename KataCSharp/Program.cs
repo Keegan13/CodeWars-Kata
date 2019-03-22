@@ -15,7 +15,8 @@ namespace KataCSharp
             // The code provided will print ‘Hello World’ to the console.
             // Press Ctrl+F5 (or go to Debug > Start Without Debugging) to run your app.
             Console.WriteLine("Execution Started");
-            WheelerTransformation();
+            //Skyscraper6();
+            Calculator();
             Console.ReadKey();
 
             // Go to http://aka.ms/dotnet-get-started-console to continue learning how to build a console app! 
@@ -85,6 +86,7 @@ namespace KataCSharp
 
 
 
+
             //var puzzle = new _6by6Skyscrapers.Skyscrapers.Puzzle(clues);
             //var solution = puzzle.Solve();
             //if (solution != null)
@@ -145,6 +147,53 @@ namespace KataCSharp
                 Console.WriteLine("Encoding {0} : result: {1}", word, encoded.Item1);
                 Console.WriteLine("Decoding {0} result: {1}", encoded.Item1, decoded);
 
+            }
+        }
+        static void Skyscrapers6Vol2()
+        {
+            //Stopwatch s = new Stopwatch();
+            //s.Start();
+            //var puzzle = new _6by6Skyscrapers.Skysrapers2.Seed(7);
+            //s.Stop();
+            //foreach (var g in puzzle.LeftSteps)
+            //{
+            //    foreach (var arr in g)
+            //        Console.WriteLine("From left {1} \t {0}", arr.Aggregate("", (agg, next) => agg += " " + next.ToString()), g.Key);
+            //}
+            //foreach (var g in puzzle.RightSteps)
+            //{
+            //    foreach (var arr in g)
+            //        Console.WriteLine("From right {1} \t {0}", arr.Aggregate("", (agg, next) => agg += " " + next.ToString()), g.Key);
+            //}
+            //Console.WriteLine("Intialization time: {0}", s.Elapsed);
+
+            //var clues = new[] { 0,0,1,2,
+            //                  0,2,0,0,
+            //                  0,3,0,0,
+            //                  0,1,0,0};
+            //var clues = new[]{ 2, 2, 1, 4, 3,
+            //                   0, 4, 1, 2, 2,
+            //                   3, 0, 4, 0, 2,
+            //                   0 ,2, 0, 1, 0};
+
+            var clues = new[]{ 3, 2, 2, 3, 2, 1,
+                           1, 2, 3, 3, 2, 2,
+                           5, 1, 2, 2, 4, 3,
+                           3, 2, 1, 2, 2, 4};
+            var s = new _6by6Skyscrapers.Skysrapers2.Node(clues);
+
+        }
+
+
+        static void Calculator()
+        {
+            var expressions = new[] { "123.45*(678.90 / (-2.5+ 11.5)-(80 -19) *33.25) / 20 + 11" };
+            var calc = new KataCSharp.Calculator.Evaluator();
+            foreach (var expression in expressions)
+            {
+                double result = 0;
+                result = calc.Evaluate(expression);
+                Console.WriteLine("Result of expression {0} = {1}", expression, result.ToString());
             }
         }
     }

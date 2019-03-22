@@ -48,9 +48,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="4by4Skyscapers\Skyscrapers.cs" />
+    <Compile Include="6by6Skyscrapers\Skysrapers2.cs" />
     <Compile Include="6by6Skyscrapers\Skysrapers.cs" />
     <Compile Include="BestTravel\Kata.cs" />
     <Compile Include="BorrowWheelerTransformation\Kata.cs" />
+    <Compile Include="Calculator\Kata.cs" />
+    <Compile Include="Calculator\Old.cs" />
     <Compile Include="Decompose.cs" />
     <Compile Include="FunctionalStreams\FunctionalStreams.cs" />
     <Compile Include="NextBiggerNumber\Kata.cs" />
