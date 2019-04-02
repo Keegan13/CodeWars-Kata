@@ -1,0 +1,9 @@
+{
+  "name": "kata-js",
+  "version": "0.0.0",
+  "description": "KataJS",
+  "main": "app.js",
+  "author": {
+    "name": ""
+  }
+}

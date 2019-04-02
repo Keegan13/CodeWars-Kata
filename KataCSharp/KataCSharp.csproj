@@ -38,6 +38,7 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Numerics" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -48,19 +49,25 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="4by4Skyscapers\Skyscrapers.cs" />
+    <Compile Include="6by6Skyscrapers\Skyscrapers0.cs" />
+    <Compile Include="6by6Skyscrapers\Skyscrapers3.cs" />
+    <Compile Include="6by6Skyscrapers\Skyscrapers4.cs" />
     <Compile Include="6by6Skyscrapers\Skysrapers2.cs" />
     <Compile Include="6by6Skyscrapers\Skysrapers.cs" />
     <Compile Include="BestTravel\Kata.cs" />
+    <Compile Include="BattleshipValidator\BattleshipField.cs" />
     <Compile Include="BorrowWheelerTransformation\Kata.cs" />
     <Compile Include="Calculator\Kata.cs" />
     <Compile Include="Calculator\Old.cs" />
     <Compile Include="Decompose.cs" />
+    <Compile Include="Fabergè Easter Eggs crush test\Faberge.cs" />
     <Compile Include="FunctionalStreams\FunctionalStreams.cs" />
     <Compile Include="NextBiggerNumber\Kata.cs" />
     <Compile Include="NextSmallerNumber\Kata.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TextAlignJustify.cs" />
+    <Compile Include="ValidateSudokuNxN\ValidateSudokuNxN.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="6by6Skyscrapers\Description.md" />

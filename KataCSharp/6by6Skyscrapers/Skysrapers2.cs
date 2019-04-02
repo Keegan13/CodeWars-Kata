@@ -91,7 +91,6 @@
             }
             private static int GetLexicalIndex(int clueIndex, int size)
             {
-
                 if (clueIndex < size) return clueIndex;
 
                 if (clueIndex >= 3 * size) return 4 * size - clueIndex - 1;
@@ -233,27 +232,6 @@
                 return String.Format("{1} {2}: {0} ", Members.Aggregate("", (a, n) => a += " " + n), Index, Dimension == 0 ? "row" : "col");
             }
         }
-
-
-
-
-        //public static IEnumerable<int[]> GetAllPermutations(this IEnumerable<int> values, int size, int pos)
-        //{
-        //    if (size - 1 == pos)
-        //    {
-        //        return values.Select(x =>
-        //        {
-        //            var next = new int[size];
-        //            next[pos] = x;
-        //            return next;
-        //        });
-        //    }
-        //    else
-        //    {
-        //        return values.SelectMany(x => values.Except(new[] { x }).GetAllPermutations(size, pos + 1).Select(f => { f[pos] = x; return f; }));
-        //    }
-        //}
-
         public static IEnumerable<IEnumerable<int>> Permute(this IEnumerable<int> values, int count)
         {
             if (count < 1) throw new ArgumentOutOfRangeException(nameof(count));
@@ -282,7 +260,7 @@
                 var seed = Enumerable.Range(1, size);
                 for (int i = 0; i < size; i++)
                     for (int j = 0; j < size; j++)
-                        Seed[i, j] = new CellSeed(seed, new Skyscrapers.Index(i, j));
+                        Seed[i, j] = new CellSeed(seed, new Skyscrapers5.Index(i, j));
             }
             public CellSeed[] GetRowSeed(int index)
             {
@@ -315,10 +293,11 @@
             }
 
         }
+
         public struct CellSeed
         {
-            public readonly Skyscrapers.Index Index;
-            public CellSeed(IEnumerable<int> values, Skyscrapers.Index index)
+            public readonly Skyscrapers5.Index Index;
+            public CellSeed(IEnumerable<int> values, Skyscrapers5.Index index)
             {
                 this.Index = index;
                 this.Values = new HashSet<int>();

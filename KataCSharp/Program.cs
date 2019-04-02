@@ -15,8 +15,7 @@ namespace KataCSharp
             // The code provided will print ‘Hello World’ to the console.
             // Press Ctrl+F5 (or go to Debug > Start Without Debugging) to run your app.
             Console.WriteLine("Execution Started");
-            //Skyscraper6();
-            Calculator();
+            BattleshipValidator.Entry.Run();
             Console.ReadKey();
 
             // Go to http://aka.ms/dotnet-get-started-console to continue learning how to build a console app! 
@@ -104,7 +103,7 @@ namespace KataCSharp
 
 
             s.Restart();
-            var puzzle = new _6by6Skyscrapers.Skyscrapers.Puzzle(clues);
+            var puzzle = new _6by6Skyscrapers.Skyscrapers5.Puzzle(clues);
             var result2 = puzzle.Solve();
             s.Stop();
 
@@ -167,20 +166,22 @@ namespace KataCSharp
             //}
             //Console.WriteLine("Intialization time: {0}", s.Elapsed);
 
-            //var clues = new[] { 0,0,1,2,
-            //                  0,2,0,0,
-            //                  0,3,0,0,
-            //                  0,1,0,0};
+            var clues = new[] { 0,0,1,2,
+                              0,2,0,0,
+                              0,3,0,0,
+                              0,1,0,0};
             //var clues = new[]{ 2, 2, 1, 4, 3,
             //                   0, 4, 1, 2, 2,
             //                   3, 0, 4, 0, 2,
             //                   0 ,2, 0, 1, 0};
 
-            var clues = new[]{ 3, 2, 2, 3, 2, 1,
-                           1, 2, 3, 3, 2, 2,
-                           5, 1, 2, 2, 4, 3,
-                           3, 2, 1, 2, 2, 4};
-            var s = new _6by6Skyscrapers.Skysrapers2.Node(clues);
+            //var clues = new[]{ 3, 2, 2, 3, 2, 1,
+            //               1, 2, 3, 3, 2, 2,
+            //               5, 1, 2, 2, 4, 3,
+            //               3, 2, 1, 2, 2, 4};
+            var s = _6by6Skyscrapers.Skyscrapers4.SolvePuzzle(clues);
+            _4by4Skyscapers.Skyscrapers.Print(s);
+
 
         }
 

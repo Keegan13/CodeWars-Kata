@@ -7,7 +7,7 @@
     using System.Text;
     using System.Threading.Tasks;
 
-    public static class Skyscrapers
+    public static class Skyscrapers5
     {
         public static int[][] SolvePuzzle(int[] clues)
         {
